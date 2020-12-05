@@ -2,10 +2,26 @@
   "name": "@overwatch/core",
   "version": "0.0.1",
   "description": "Core of overwatch SDK",
-  "main": "index.js",
+  "main": "dist/overwatch-core.cjs.js",
+  "module": "dist/overwatch-core.esm.js",
+  "unpkg": "dist/overwatch-core.umd.js",
+  "jsdelivr": "dist/overwatch-core.umd.js",
+  "types": "dist/index.d.ts",
+  "buildOptions": {
+    "name": "OverwatchCore",
+    "formats": [
+      "esm",
+      "cjs",
+      "umd"
+    ],
+    "order": 2
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "dist"
+  ],
   "author": "tianzhen <mecoepcoo@vip.qq.com>",
   "license": "MIT"
 }

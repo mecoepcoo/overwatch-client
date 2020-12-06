@@ -20,5 +20,5 @@ let envOptions = ''
 for (let key in environments) {
   envOptions += `--environment ${key}=${environments[key]} `
 }
-let cmd = `${resolve(BIN_DIR, 'cross-env')} NODE_ENV=${ENV} ${resolve(BIN_DIR, 'rollup')} -c ${rollupConfig} ${envOptions}`
+let cmd = `${resolve(BIN_DIR, 'cross-env')} NODE_ENV=${ENV} ${resolve(BIN_DIR, 'rollup')} -c ${rollupConfig} -w ${envOptions}`
 shell.exec(cmd)

@@ -74,6 +74,11 @@ function createConfig(job, plugins = []) {
       babel({
         exclude: 'node_modules/**',
         extensions,
+        babelHelpers: 'bundled',
+        presets: [
+          '@babel/preset-env',
+          '@babel/preset-typescript'
+        ]
       }),
       ...plugins,
     ],

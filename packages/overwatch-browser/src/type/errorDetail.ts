@@ -18,9 +18,9 @@ export interface ScriptErrorDetail extends BaseErrorDetail {
   /** 发生异常的文件路径 */
   filePath: string
   /** 行号 */
-  line: number
+  lineno: number
   /** 列号 */
-  col: number
+  colno: number
   /** 错误堆栈 */
   stack: string
 }

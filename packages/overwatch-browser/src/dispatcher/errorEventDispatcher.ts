@@ -1,4 +1,6 @@
 import { uncaughtErrorHandler } from '../handler/uncaughtErrorHandler'
+import { resourceErrorHandler } from '../handler/resourceErrorHandler'
+import { unhandledrejectionHandler } from '../handler/unhandledrejectionHandler'
 
 export function errorEventDispatch(e: ErrorEvent | PromiseRejectionEvent) {
   const { type } = e
@@ -13,10 +15,11 @@ export function errorEventDispatch(e: ErrorEvent | PromiseRejectionEvent) {
       }
       uncaughtErrorHandler(evt)
     } else if (target) {
-      // resourceErrorHandler(e)
+      resourceErrorHandler(evt)
     }
   } else if (type === 'unhandledrejection') {
-    // unhandledrejectionHandler()
+    const evt = e as PromiseRejectionEvent
+    unhandledrejectionHandler(evt)
   } else {
     // unknownErrorHandler()
   }

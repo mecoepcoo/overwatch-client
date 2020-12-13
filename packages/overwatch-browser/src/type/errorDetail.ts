@@ -25,6 +25,11 @@ export interface ScriptErrorDetail extends BaseErrorDetail {
   stack: string
 }
 
+export interface UnhandledrejectionDetail extends BaseErrorDetail {
+  type: 'unhandledrejection'
+  stack?: string
+}
+
 export interface ResourceErrorDetail extends BaseErrorDetail {
   type: 'resourceError'
   src: string

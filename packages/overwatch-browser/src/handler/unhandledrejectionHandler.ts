@@ -1,4 +1,5 @@
-import { UnhandledrejectionDetail } from '../type/errorDetail'
+import { UnhandledrejectionDetail } from '../type/index'
+
 export function unhandledrejectionHandler(e: PromiseRejectionEvent) {
   console.log(e)
   const { reason } = e

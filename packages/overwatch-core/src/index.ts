@@ -1,1 +1,1 @@
-export default 'test'
+export * as utils from './utils'

@@ -8,6 +8,9 @@
     "commit": "git add . && cz",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "dev": "node script/dev.js",
+    "dev:core": "npm run dev target=core",
+    "dev:browser": "npm run dev target=browser",
+    "tsc": "lerna run tsc",
     "bootstrap": "lerna bootstrap"
   },
   "devDependencies": {

@@ -1,4 +1,4 @@
-import { ScriptErrorDetail } from '../type/errorDetail'
+import { ScriptErrorDetail } from '../type/index'
 
 export function uncaughtErrorHandler(e: ErrorEvent) {
   console.log(e)

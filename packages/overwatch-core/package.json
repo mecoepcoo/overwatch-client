@@ -17,6 +17,7 @@
     "order": 2
   },
   "scripts": {
+    "tsc": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "files": [

@@ -41,7 +41,7 @@ export interface ResourceErrorDetail extends BaseErrorDetail {
 export interface HttpErrorDetail extends BaseErrorDetail {
   type: 'httpError'
   url: string
-  method: string
+  method?: string
   status: number
   statusText: string
   loadTime: number

@@ -1,8 +1,5 @@
-import { captureScriptError, captureUnhandledrejection } from './capture/error/scriptError'
-import { captureHttpError } from './capture/error/httpError'
+import { executeCapture } from './capture'
 
-captureScriptError()
-captureUnhandledrejection()
-captureHttpError()
+executeCapture()
 
 export default 'test'

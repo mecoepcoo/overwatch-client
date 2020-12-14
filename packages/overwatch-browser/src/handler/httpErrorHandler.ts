@@ -7,7 +7,7 @@ export function httpErrorHandler(timeRecordArray: TimeRecord[]) {
     const { timestamp, event } = timeRecord
     const { detail } = event
     if ((detail.status >= 200 && detail.status < 400) || detail.status <= 0) {
-      // return
+      return
     }
     const currentTime = new Date().getTime()
     const { responseURL, status, statusText } = detail

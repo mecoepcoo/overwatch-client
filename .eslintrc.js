@@ -82,6 +82,7 @@ module.exports = {
     'no-else-return': 0,
     'no-bitwise': 0,
     'global-require': 0,
+    '@typescript-eslint/ban-types': 0,
     // 避免报错（未知原因）
     '@typescript-eslint/lines-between-class-members': 0,
     '@typescript-eslint/dot-notation': 0,

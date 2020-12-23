@@ -4,7 +4,7 @@ interface XHROpts {
   withCredentials: boolean
   success?: Function
   fail?: Function
-  headers?: any
+  headers?: Record<string, any>
   data?: any
 }
 

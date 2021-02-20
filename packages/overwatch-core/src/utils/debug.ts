@@ -1,8 +1,8 @@
 import { noop } from './helper'
 
 type LoggerOptions = {
-  info: Function
-  warn: Function
+  info: (msg: string) => void
+  warn: (msg: string) => void
 }
 
 export const logger: LoggerOptions = {

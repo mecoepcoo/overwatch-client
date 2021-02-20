@@ -1,6 +1,7 @@
-import type { GlobalConfig } from '../type'
+import type { GlobalConfig, BaseOverwatch, Plugin } from '../type'
 
 import { noop } from '../utils/helper'
+import { installPlugin } from '../core-api'
 
 const defaultConfig: Partial<GlobalConfig> = {
   releaseStage: '',
@@ -15,11 +16,16 @@ const defaultConfig: Partial<GlobalConfig> = {
   language: 'javascript',
 }
 
-class Overwatch {
-  config: GlobalConfig
+class Overwatch implements BaseOverwatch {
+  readonly _config: GlobalConfig
+  readonly _plugins: [] = []
 
   constructor(config: GlobalConfig) {
-    this.config = Object.assign({}, defaultConfig, config)
+    this._config = Object.assign({}, defaultConfig, config)
+  }
+
+  use(plugin: Plugin, ...args: any[]): any {
+    return installPlugin(this, plugin, ...args)
   }
 }
 

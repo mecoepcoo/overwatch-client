@@ -21,7 +21,7 @@ class Overwatch implements BaseOverwatch {
   readonly _plugins: [] = []
 
   constructor(config: GlobalConfig) {
-    this._config = Object.assign({}, defaultConfig, config)
+    this._config = { ...defaultConfig, ...config }
   }
 
   use(plugin: Plugin, ...args: any[]): any {

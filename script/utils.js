@@ -1,3 +1,5 @@
+const resolve = require('path').resolve
+
 function getArgs(argsList) {
   let args = {}
   function parseArgs (arg) {
@@ -17,6 +19,12 @@ function getArgs(argsList) {
   return args
 }
 
+const BIN_DIR = resolve(__dirname, '../node_modules/.bin')
+const bin = (command) => {
+  return resolve(BIN_DIR, command)
+}
+
 module.exports = {
+  bin,
   getArgs,
 }

@@ -11,7 +11,8 @@
     "dev:core": "npm run dev target=core",
     "dev:browser": "npm run dev target=browser",
     "tsc": "lerna run tsc",
-    "bootstrap": "lerna bootstrap"
+    "bootstrap": "lerna bootstrap",
+    "tsc:core": "node script/tsc.js --target=core"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -42,6 +43,7 @@
     "rollup": "^2.34.1",
     "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
     "shelljs": "^0.8.4",
     "typescript": "^4.1.2"
   },

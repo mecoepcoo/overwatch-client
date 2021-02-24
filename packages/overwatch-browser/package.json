@@ -14,7 +14,7 @@
       "cjs",
       "umd"
     ],
-    "order": 3
+    "order": 2
   },
   "scripts": {
     "tsc": "tsc",

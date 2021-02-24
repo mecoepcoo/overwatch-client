@@ -1,24 +1,17 @@
-const resolve = require('path').resolve
+const path = require('path')
 const shell = require('shelljs')
 const argv = require('yargs').argv
-const utils = require('./utils')
-const _ = require('lodash')
-const { getArgs } = utils
+const { getArgs } = require('./utils')
+
+const resolve = function(...args) {
+  return path.resolve(__dirname, ...args)
+}
 
 const ENV = 'development'
-const BIN_DIR = resolve(__dirname, '../node_modules/.bin')
-let args = getArgs(argv._)
-const rollupConfig = resolve(__dirname, '../build/rollup.config.js')
 
-let environments = {
-  target: args.target,
-  format: args.format,
-  formats: args.formats,
-}
-environments = _.omitBy(environments, _.isNil)
-let envOptions = ''
-for (let key in environments) {
-  envOptions += `--environment ${key}=${environments[key]} `
-}
-let cmd = `${resolve(BIN_DIR, 'cross-env')} NODE_ENV=${ENV} ${resolve(BIN_DIR, 'rollup')} -c ${rollupConfig} -w ${envOptions}`
+const args = getArgs(argv._)
+const target = args.target || 'core'
+const rollupConfig = resolve('rollup.config.js')
+
+let cmd = `cross-env target=${target} NODE_ENV=${ENV} rollup -w -c ${rollupConfig}`
 shell.exec(cmd)

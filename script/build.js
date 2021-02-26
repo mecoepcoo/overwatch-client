@@ -1,17 +1,20 @@
 const fs = require('fs-extra')
 const path = require('path')
 const argv = require('yargs').argv
+const shell = require('shelljs')
 const { getArgs } = require('./utils')
 
 const resolve = function(...args) {
   return path.resolve(__dirname, ...args)
 }
 
-const args = getArgs(argv._)
-const target = args.target
 const env = 'production'
 
-const targets = fs
+const args = getArgs(argv._)
+const target = args.target
+const rollupConfig = resolve('rollup.config.js')
+
+const targets = target || fs
   .readdirSync(resolve('../packages'))
   .filter((dirname) => {
     const pkgDir = resolve('../packages', dirname)
@@ -31,12 +34,23 @@ const targets = fs
   .map((dirname) => dirname.replace('overwatch-', ''))
 
 console.log(targets)
-
+// 编译单个包
 function build(target) {
   const pkgName = `overwatch-${target}`
   const pkgDir = resolve('../packages', pkgName)
   // 清空输出目录
   fs.removeSync(`${pkgDir}/dist`)
-  // TODO: 执行rollup命令
 
+  let cmd = `cross-env target=${target} NODE_ENV=${env} rollup -c ${rollupConfig}`
+  shell.exec(cmd)
 }
+// 编译全部包
+async function buildTargets(targets) {
+  for (let target of targets) {
+    await build(target)
+  }
+}
+
+;(async () => {
+  await buildTargets(targets)
+})()

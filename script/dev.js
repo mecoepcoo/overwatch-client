@@ -7,11 +7,11 @@ const resolve = function(...args) {
   return path.resolve(__dirname, ...args)
 }
 
-const ENV = 'development'
+const env = 'development'
 
 const args = getArgs(argv._)
 const target = args.target || 'core'
 const rollupConfig = resolve('rollup.config.js')
 
-let cmd = `cross-env target=${target} NODE_ENV=${ENV} rollup -w -c ${rollupConfig}`
+let cmd = `cross-env target=${target} NODE_ENV=${env} rollup -w -c ${rollupConfig}`
 shell.exec(cmd)

@@ -1,35 +1,35 @@
 import path from 'path'
-import babel from '@rollup/plugin-babel'
+import ts from 'rollup-plugin-typescript2'
 import { eslint } from 'rollup-plugin-eslint'
 import commonjs from '@rollup/plugin-commonjs'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import replace from '@rollup/plugin-replace'
 import json from '@rollup/plugin-json'
+import { terser } from 'rollup-plugin-terser'
 import { merge } from 'lodash'
-const argv = require('yargs').argv;
 
 const resolve = function(...args) {
   return path.resolve(__dirname, ...args)
 }
 
-const getArgs = require(resolve('../script/utils.js')).getArgs
-const args = getArgs(argv.environment)
-const TARGET = args.target
-const pkgName = `overwatch-${TARGET}`
+const env = process.env.NODE_ENV || 'production'
+const target = process.env.target || ''
+const pkgName = `overwatch-${target}`
 const pkgsDir = resolve('../packages')
 const pkgDir = resolve(pkgsDir, pkgName)
-const pkg = require(resolve(`${pkgsDir}/${pkgName}/package.json`))
-const VERSION = pkg.version
-const { buildOptions: pkgBuildOptions = {} } = pkg
+const pkg = require(resolve(`${pkgDir}/package.json`))
+const buildOptions = pkg.buildOptions || {}
+const buildFormats = buildOptions.formats || ['esm', 'cjs', 'umd']
+const version = pkg.version
 
 const banner = `/**
-* ${pkg.name} v${VERSION}
+* ${pkg.name} v${version}
 * (c) ${new Date().getFullYear()} Tianzhen <mecoepcoo@vip.qq.com>
 */`
 
 const extensions = ['.js', '.ts']
 
-const jobs = {
+const formatConfig = {
   esm: {
     output: {
       format: 'esm',
@@ -45,55 +45,56 @@ const jobs = {
   umd: {
     output: {
       format: 'umd',
-      name: pkgBuildOptions.name,
+      name: buildOptions.name,
       file: resolve(`${pkgDir}/${pkg.unpkg}`),
     },
   }
 }
 
-function createConfig(job, plugins = []) {
+function createConfig(input, output, plugins = [], override) {
   return merge({
-    input: resolve(pkgDir, 'src/index.ts'),
-    output: {
-      sourcemap: true,
-      banner,
-    },
+    input,
+    output,
     plugins: [
       eslint(),
       replace({
         exclude: 'node_modules/**',
-        __TARGET__: JSON.stringify(TARGET || ''),
-        __VERSION__: JSON.stringify(VERSION),
+        __TARGET__: JSON.stringify(target || ''),
+        __VERSION__: JSON.stringify(version),
       }),
       commonjs(),
       nodeResolve({
         extensions,
-        modulesOnly: true,
       }),
       json(),
-      babel({
-        exclude: 'node_modules/**',
-        extensions,
-        babelHelpers: 'bundled',
-        presets: [
-          '@babel/preset-env',
-          '@babel/preset-typescript'
-        ]
+      ts({
+        tsconfig: resolve(pkgDir, 'tsconfig.json')
       }),
       ...plugins,
     ],
-  }, job)
+  }, override)
 }
 
-let formats = args.format || args.formats || 'esm,cjs,umd'
-formats = formats.split(',')
+const config = []
 
-let config = formats.map((format) => {
-  const job = jobs[format]
-  if (process.env.NODE_ENV === 'production') {
-    return createConfig(job, [terser()])  
-  }
-  return createConfig(job)
+let plugins = []
+if (env === 'production') {
+  plugins.push(terser({
+    format: {
+      comments: RegExp(`${pkg.name}`)
+    }
+  }))
+}
+buildFormats.forEach((format) => {
+  let configItem = createConfig(
+    resolve(pkgDir, 'src/index.ts'),
+    {
+      sourcemap: true,
+      banner,
+    },
+    plugins,
+    {...formatConfig[format]},
+  )
+  config.push(configItem)
 })
-
 export default config

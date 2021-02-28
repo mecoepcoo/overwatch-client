@@ -11,7 +11,7 @@ const env = 'development'
 
 const args = getArgs(argv._)
 const target = args.target || 'core'
-const rollupConfig = resolve('rollup.config.js')
+const rollupConfig = resolve('../build/rollup.config.js')
 
 let cmd = `cross-env target=${target} NODE_ENV=${env} rollup -w -c ${rollupConfig}`
 shell.exec(cmd)

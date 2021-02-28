@@ -7,6 +7,9 @@
   "unpkg": "dist/overwatch-core.umd.js",
   "jsdelivr": "dist/overwatch-core.umd.js",
   "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "buildOptions": {
     "name": "OverwatchCore",
     "formats": [
@@ -17,7 +20,6 @@
     "order": 1
   },
   "scripts": {
-    "tsc": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "files": [

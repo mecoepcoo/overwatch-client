@@ -6,13 +6,13 @@
   ],
   "scripts": {
     "commit": "git add . && cz",
+    "bootstrap": "lerna bootstrap",
+    "link": "lerna link",
+    "predev": "npm run bootstrap && npm run link && npm run build",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "dev": "node script/dev.js",
     "dev:core": "npm run dev target=core",
-    "build": "node script/build.js",
-    "tsc": "lerna run tsc",
-    "bootstrap": "lerna bootstrap",
-    "tsc:core": "node script/tsc.js --target=core"
+    "build": "node script/build.js"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

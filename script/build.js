@@ -12,9 +12,9 @@ const env = 'production'
 
 const args = getArgs(argv._)
 const target = args.target
-const rollupConfig = resolve('rollup.config.js')
+const rollupConfig = resolve('../build/rollup.config.js')
 
-const targets = target || fs
+const targets = target ? [target] : fs
   .readdirSync(resolve('../packages'))
   .filter((dirname) => {
     const pkgDir = resolve('../packages', dirname)
@@ -33,7 +33,6 @@ const targets = target || fs
   })
   .map((dirname) => dirname.replace('overwatch-', ''))
 
-console.log(targets)
 // 编译单个包
 function build(target) {
   const pkgName = `overwatch-${target}`
@@ -45,12 +44,10 @@ function build(target) {
   shell.exec(cmd)
 }
 // 编译全部包
-async function buildTargets(targets) {
+function buildTargets(targets) {
   for (let target of targets) {
-    await build(target)
+    build(target)
   }
 }
 
-;(async () => {
-  await buildTargets(targets)
-})()
+buildTargets(targets)

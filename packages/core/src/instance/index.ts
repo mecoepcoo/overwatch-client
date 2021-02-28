@@ -1,4 +1,4 @@
-import type { GlobalConfig, BaseOverwatch, Plugin } from '../type'
+import type { GlobalConfig, BaseClient, Plugin } from '../type'
 
 import { noop } from '../utils/helper'
 import { installPlugin } from '../core-api'
@@ -16,7 +16,7 @@ const defaultConfig: Partial<GlobalConfig> = {
   language: 'javascript',
 }
 
-class Overwatch implements BaseOverwatch {
+class Client implements BaseClient {
   readonly _config: GlobalConfig
   readonly _plugins: [] = []
 
@@ -29,4 +29,4 @@ class Overwatch implements BaseOverwatch {
   }
 }
 
-export default Overwatch
+export default Client

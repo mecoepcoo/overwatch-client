@@ -5,10 +5,10 @@
     "packages/*"
   ],
   "scripts": {
+    "start": "npm run bootstrap && npm run link && npm run build",
     "commit": "git add . && cz",
     "bootstrap": "lerna bootstrap",
     "link": "lerna link",
-    "predev": "npm run bootstrap && npm run link && npm run build",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "dev": "node script/dev.js",
     "dev:core": "npm run dev target=core",

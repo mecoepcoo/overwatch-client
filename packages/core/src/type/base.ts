@@ -1,6 +1,6 @@
 import type { GlobalConfig, Plugin } from '../type'
 
-export interface BaseOverwatch {
+export interface BaseClient {
   readonly _config: GlobalConfig
   readonly _plugins: Plugin[]
 

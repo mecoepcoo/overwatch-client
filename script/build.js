@@ -31,11 +31,10 @@ const targets = target ? [target] : fs
     const pkgB = require(resolve(pkgsDir, `${b}/package.json`))
     return pkgA.buildOptions.order - pkgB.buildOptions.order
   })
-  .map((dirname) => dirname.replace('overwatch-', ''))
 
 // 编译单个包
 function build(target) {
-  const pkgName = `overwatch-${target}`
+  const pkgName = target
   const pkgDir = resolve('../packages', pkgName)
   // 清空输出目录
   fs.removeSync(`${pkgDir}/dist`)

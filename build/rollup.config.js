@@ -13,8 +13,8 @@ const resolve = function(...args) {
 }
 
 const env = process.env.NODE_ENV || 'production'
-const target = process.env.target || ''
-const pkgName = `overwatch-${target}`
+const target = process.env.target || 'core'
+const pkgName = target
 const pkgsDir = resolve('../packages')
 const pkgDir = resolve(pkgsDir, pkgName)
 const pkg = require(resolve(`${pkgDir}/package.json`))

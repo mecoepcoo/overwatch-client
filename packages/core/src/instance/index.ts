@@ -16,7 +16,7 @@ const defaultConfig: Partial<GlobalConfig> = {
   language: 'javascript',
 }
 
-class Client implements BaseClient {
+export class Client implements BaseClient {
   readonly _config: GlobalConfig
   readonly _plugins: [] = []
 
@@ -28,5 +28,3 @@ class Client implements BaseClient {
     return installPlugin(this, plugin, ...args)
   }
 }
-
-export default Client

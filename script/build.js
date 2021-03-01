@@ -9,6 +9,8 @@ const resolve = function(...args) {
 }
 
 const env = 'production'
+// 不打包的列表
+const blockList = ['type']
 
 const args = getArgs(argv._)
 const target = args.target
@@ -16,6 +18,9 @@ const rollupConfig = resolve('../build/rollup.config.js')
 
 const targets = target ? [target] : fs
   .readdirSync(resolve('../packages'))
+  .filter((dirname) => {
+    return !!blockList.includes(dirname)
+  })
   .filter((dirname) => {
     const pkgDir = resolve('../packages', dirname)
     const pkg = require(resolve(`${pkgDir}/package.json`))

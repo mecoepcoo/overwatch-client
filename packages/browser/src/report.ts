@@ -1,4 +1,4 @@
-import { sendRequest } from '../lib/xhr'
+import { sendRequest } from './lib/xhr'
 
 export function report(
   url: string,

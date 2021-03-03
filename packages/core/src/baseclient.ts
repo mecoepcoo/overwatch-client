@@ -1,9 +1,9 @@
-import type { GlobalConfig, BaseClient, Plugin } from '../type'
+import type { GlobalConfig, BaseClient, Plugin } from './type'
 
-import { noop } from '../utils/helper'
-import { installPlugin } from '../core-api'
+import { noop } from './utils/helper'
+import { installPlugin } from './core-api'
 
-const defaultConfig: Partial<GlobalConfig> = {
+/* const defaultConfig: Partial<GlobalConfig> = {
   releaseStage: '',
   metaData: {},
   delay: 0,
@@ -27,4 +27,4 @@ export class Client implements BaseClient {
   use(plugin: Plugin, ...args: any[]): any {
     return installPlugin(this, plugin, ...args)
   }
-}
+} */

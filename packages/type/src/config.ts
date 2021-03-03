@@ -1,4 +1,4 @@
-export interface Config {
+export type Config = {
   /* 基本配置 */
   /** 应用id */
   appId: string
@@ -20,7 +20,7 @@ export interface Config {
   repeat?: number
   /** 本地存储的有效期(天) */
   localExp?: number
-  /** */
+  /** 忽略不上报的异常，支持正则表达式 */
   ignoreErrors: (string | RegExp)[]
 
   /* 开发相关配置 */

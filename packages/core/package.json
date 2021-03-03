@@ -26,5 +26,8 @@
     "dist"
   ],
   "author": "tianzhen <mecoepcoo@vip.qq.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@tz-overwatch/type": "^0.0.1"
+  }
 }

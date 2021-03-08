@@ -12,11 +12,11 @@ export abstract class BaseClient<C extends Config> implements Client<C> {
     this._config = config
   }
 
-  use: (plugin: Plugin, ...args: any[]) => any
+  abstract use(plugin: Plugin, ...args: any[]): any
 
-  getConfig(): C
+  abstract getConfig(): C
 
-  getPlugins(): Plugin[]
+  abstract getPlugins(): Plugin[]
 }
 
 /* const defaultConfig: Partial<GlobalConfig> = {

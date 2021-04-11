@@ -5,10 +5,10 @@ import { noop } from './utils/helper'
 import { installPlugin } from './core-api'
 
 export abstract class BaseClient<C extends Config> implements Client<C> {
-  protected readonly _config: C
-  protected readonly _plugins: Plugin[] = []
+  readonly _config: C
+  readonly _plugins: Plugin[] = []
 
-  protected constructor(config: C) {
+  constructor(config: C) {
     this._config = config
   }
 

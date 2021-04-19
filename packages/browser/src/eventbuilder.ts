@@ -1,3 +1,5 @@
+import { v4 as uuid } from 'uuid'
+import { MD5 } from 'crypto-js'
 import {
   EventType,
   Event,
@@ -10,6 +12,7 @@ import {
 
 export function eventFromError<D>(eventType: EventType, detail: D): Event {
   // TODO: 根据不同的error类型，创建格式统一的event
+  let event_id = MD5(uuid()).toString()
   switch (eventType) {
     case 'scriptError':
       break

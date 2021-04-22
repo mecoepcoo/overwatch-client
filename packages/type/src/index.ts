@@ -9,6 +9,7 @@ export {
   ResourceError,
   HttpError,
   CustomError,
+  Detail,
 } from './eventdetail'
 export { Package } from './package'
 export { Plugin } from './plugin'

@@ -42,3 +42,5 @@ export interface HttpError {
 export interface CustomError {
   [propName: string]: unknown
 }
+
+export type Detail = ScriptError | UnhandledrejectionError | ResourceError | HttpError | CustomError

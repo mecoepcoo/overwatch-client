@@ -1,4 +1,4 @@
-import { Transport } from '@tz-overwatch/type'
+import { Transport, Event } from '@tz-overwatch/type'
 import { logger } from './utils'
 
 /**

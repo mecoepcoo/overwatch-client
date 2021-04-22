@@ -1,4 +1,4 @@
-import { TimeRecord, HttpErrorDetail } from '../type'
+import { TimeRecord } from '../type'
 
 export function httpErrorHandler(timeRecordArray: TimeRecord[]) {
   console.log(timeRecordArray)

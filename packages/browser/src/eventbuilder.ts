@@ -8,10 +8,9 @@ import {
   ResourceError,
   HttpError,
   CustomError,
+  Detail,
 } from '@tz-overwatch/type'
 import pkg from '../package.json'
-
-type Detail = ScriptError | UnhandledrejectionError | ResourceError | HttpError | CustomError
 
 export function eventFromError<D extends Detail>(eventType: EventType, detail: D): Event {
   let event = createBaseEvent(eventType)

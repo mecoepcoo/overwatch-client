@@ -19,7 +19,7 @@ export type EventType =
  */
 export interface Event {
   id: string
-  /** 发生错误的时间 */
+  /** 发生错误的时间，客户端记录 */
   timestamp: number
   /** 应用版本 */
   version: string

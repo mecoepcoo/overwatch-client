@@ -2,6 +2,8 @@
 export interface ScriptError {
   /** 异常名称 */
   name: string
+  /** error message */
+  message: string
   /** 发生异常的文件路径 */
   filePath: string
   /** 行号 */

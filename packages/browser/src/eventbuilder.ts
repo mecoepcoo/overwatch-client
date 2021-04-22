@@ -9,30 +9,43 @@ import {
   HttpError,
   CustomError,
 } from '@tz-overwatch/type'
+import pkg from '../package.json'
 
-export function eventFromError<D>(eventType: EventType, detail: D): Event {
-  // TODO: 根据不同的error类型，创建格式统一的event
-  let event_id = MD5(uuid()).toString()
+type Detail = ScriptError | UnhandledrejectionError | ResourceError | HttpError | CustomError
+
+export function eventFromError<D extends Detail>(eventType: EventType, detail: D): Event {
+  let event = createBaseEvent(eventType)
   switch (eventType) {
     case 'scriptError':
+      event.scriptError = detail as ScriptError
       break
     case 'unhandledrejection':
+      event.unhandledrejectionError = detail as UnhandledrejectionError
       break
     case 'resourceError':
-      break
-    case 'resourceError':
+      event.resourceError = detail as ResourceError
       break
     case 'httpError':
+      event.httpError = detail as HttpError
       break
     case 'customError':
+      event.customError = detail as CustomError
       break
     default:
   }
-  return {} as Event
+  return event
 }
 
 // 创建基本的event
-function createBaseEvent(): Partial<Event> {
-  // do something
-  return {} as Event
+function createBaseEvent(eventType: string): Event {
+  let event_id = MD5(uuid()).toString()
+  let event: Event = {
+    id: event_id,
+    timestamp: new Date().getTime(),
+    version: pkg.version,
+    type: eventType,
+    pageUrl: window.location.href,
+    ua: window.navigator.userAgent,
+  }
+  return event
 }

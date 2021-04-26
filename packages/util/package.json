@@ -1,0 +1,28 @@
+{
+  "name": "@tz-overwatch/util",
+  "version": "0.0.1",
+  "description": "Utils for overwatch",
+  "author": "mecoepcoo <340349237@qq.com>",
+  "homepage": "https://github.com/mecoepcoo/overwatch-client#readme",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "directories": {
+    "test": "__tests__"
+  },
+  "files": [
+    "src"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mecoepcoo/overwatch-client.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/mecoepcoo/overwatch-client/issues"
+  }
+}

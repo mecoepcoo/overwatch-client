@@ -1,5 +1,6 @@
 import { Transport } from './transport'
-import { Event } from './event'
+import { Detail } from './eventdetail'
+import { Event, EventType } from './event'
 
 /**
  * Driver用于处理SDK中的具体业务逻辑，例如生成、发送事件等。
@@ -16,6 +17,12 @@ export interface Driver {
    * @returns transport
    */
   getTransport(): Transport
+
+  /**
+   * 从错误详情创建一个事件
+   */
+  eventFromError<D extends Detail>(eventType: EventType, detail: D): Event
+
   /** 发送事件 */
   sendEvent(event: Event): void
 }

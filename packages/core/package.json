@@ -28,6 +28,7 @@
   "author": "tianzhen <mecoepcoo@vip.qq.com>",
   "license": "MIT",
   "dependencies": {
-    "@tz-overwatch/type": "^0.0.1"
+    "@tz-overwatch/type": "^0.0.1",
+    "@tz-overwatch/util": "^0.0.1"
   }
 }

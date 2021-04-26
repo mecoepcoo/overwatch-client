@@ -1,7 +1,7 @@
 // import type { GlobalConfig, Plugin } from './type'
 import { Config, Client, Plugin } from '@tz-overwatch/type'
 
-import { noop } from './utils/helper'
+import { noop } from '@tz-overwatch/util'
 import { installPlugin } from './core-api'
 
 export abstract class BaseClient<C extends Config> implements Client<C> {

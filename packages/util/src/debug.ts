@@ -5,6 +5,7 @@ type LoggerOptions = {
   warn: (msg: string) => void
 }
 
+// logger仅在库内部使用
 export const logger: LoggerOptions = {
   info: noop,
   warn: noop,

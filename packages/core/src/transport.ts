@@ -1,5 +1,5 @@
 import { Transport, Event } from '@tz-overwatch/type'
-import { logger } from './utils'
+import { logger } from '@tz-overwatch/util'
 
 /**
  * 默认的transport，当transport未配置时给出提示

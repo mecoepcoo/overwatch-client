@@ -1,5 +1,5 @@
 import type { Client, Plugin } from '@tz-overwatch/type'
-import { logger } from '../utils'
+import { logger } from '@tz-overwatch/util'
 
 export function installPlugin(Client: Client, plugin: Plugin, ...args: any[]) {
   const installedPlugins = Client._plugins

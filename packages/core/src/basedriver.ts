@@ -18,7 +18,7 @@ export abstract class BaseDriver<C extends Config> implements Driver {
 
   constructor(config: C) {
     this._config = config
-    this._transport = new DefaultTransport()
+    this._transport = this._setTransport()
   }
 
   getTransport(): Transport {
@@ -33,5 +33,9 @@ export abstract class BaseDriver<C extends Config> implements Driver {
 
   sendEvent(event: Event): any {
     this._transport.sendEvent(event)
+  }
+
+  protected _setTransport(): Transport {
+    return new DefaultTransport()
   }
 }

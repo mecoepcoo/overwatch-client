@@ -19,7 +19,7 @@ const rollupConfig = resolve('../build/rollup.config.js')
 const targets = target ? [target] : fs
   .readdirSync(resolve('../packages'))
   .filter((dirname) => {
-    return !!blockList.includes(dirname)
+    return !blockList.includes(dirname)
   })
   .filter((dirname) => {
     const pkgDir = resolve('../packages', dirname)

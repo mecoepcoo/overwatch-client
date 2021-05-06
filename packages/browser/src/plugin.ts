@@ -1,3 +1,4 @@
+// TODO: deprecated
 import type { type } from '@tz-overwatch/core'
 
 import { executeCapture } from './capture'

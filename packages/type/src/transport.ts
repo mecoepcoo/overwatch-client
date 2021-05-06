@@ -10,7 +10,6 @@ export type Transport = {
 }
 
 export type TransportOptions = {
-  // TODO: 传输器选项，应该有日志服务器url，port之类的东西
   [propName: string]: any
 }
 

@@ -30,6 +30,7 @@
   "dependencies": {
     "@tz-overwatch/core": "^0.0.1",
     "@tz-overwatch/type": "^0.0.1",
+    "@tz-overwatch/util": "^0.0.1",
     "crypto-js": "^4.0.0",
     "uuid": "^8.3.2"
   },

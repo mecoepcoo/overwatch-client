@@ -1,4 +1,4 @@
-import { BaseClient } from '@tz-overwatch/core'
+import { BaseClient, installPlugin } from '@tz-overwatch/core'
 import type { Config, Plugin } from '@tz-overwatch/type'
 
 export class BrowserClient extends BaseClient<Config> {
@@ -10,8 +10,8 @@ export class BrowserClient extends BaseClient<Config> {
     this._config = config
   }
 
-  public use() {
-    // TODO:
+  public use(plugin: Plugin, ...args: any[]): any {
+    return installPlugin(this, plugin, ...args)
   }
 
   public getConfig(): Config {

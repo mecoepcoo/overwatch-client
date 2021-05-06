@@ -10,7 +10,7 @@ export function installPlugin(Client: Client, plugin: Plugin, ...args: any[]) {
     logger.warn('Plugin must contain a member method named install.')
     return Client
   }
-  plugin.install.apply(plugin, [Client, args])
+  plugin.install.apply(plugin, [Client, ...args])
   installedPlugins.push(plugin)
   return Client
 }

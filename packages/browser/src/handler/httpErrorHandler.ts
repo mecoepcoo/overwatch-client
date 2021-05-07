@@ -1,3 +1,4 @@
+import { HttpError } from '@tz-overwatch/type'
 import { TimeRecord } from '../type'
 
 export function httpErrorHandler(timeRecordArray: TimeRecord[]) {
@@ -18,11 +19,7 @@ export function httpErrorHandler(timeRecordArray: TimeRecord[]) {
     } catch (err) {
       response = ''
     }
-    let httpError: HttpErrorDetail = {
-      type: 'httpError',
-      timestamp: currentTime,
-      pageUrl: window.location.href,
-      title: document.title,
+    let httpError: HttpError = {
       url: responseURL,
       status,
       statusText,

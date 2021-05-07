@@ -1,14 +1,10 @@
-import { ScriptErrorDetail } from '../type/index'
+import { ScriptError } from '@tz-overwatch/type'
 
 export function uncaughtErrorHandler(e: ErrorEvent) {
   console.log(e)
   const { filename, message, lineno, colno, error } = e
   const { name, stack } = error
-  const scriptErrorDetail: ScriptErrorDetail = {
-    type: 'scriptError',
-    timestamp: new Date().getTime(),
-    pageUrl: window.location.href,
-    title: document.title,
+  const scriptErrorDetail: ScriptError = {
     message,
     name,
     filePath: filename,

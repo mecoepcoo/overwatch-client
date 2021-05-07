@@ -1,7 +1,5 @@
-import { ResourceErrorDetail } from '../type/index'
-import { utils as coreUtils } from '@tz-overwatch/core'
-
-const { getXPath } = coreUtils
+import { ResourceError } from '@tz-overwatch/type'
+import { getXPath } from '@tz-overwatch/util'
 
 export function resourceErrorHandler(e: ErrorEvent) {
   console.log(e)
@@ -21,11 +19,7 @@ export function resourceErrorHandler(e: ErrorEvent) {
   } else if (target instanceof HTMLLinkElement) {
     url = target.href
   }
-  const resourceErrorDetail: ResourceErrorDetail = {
-    type: 'resourceError',
-    timestamp: new Date().getTime(),
-    pageUrl: window.location.href,
-    title: document.title,
+  const resourceErrorDetail: ResourceError = {
     src: url,
     tagName: target.tagName,
     outerHTML: target.outerHTML,
